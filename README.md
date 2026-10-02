@@ -137,7 +137,7 @@ In ra tình trạng Python, các thư viện pip thường dùng, bản cập nh
 - Một số phần mềm diệt virus có thể báo nhầm các chương trình có thao tác xóa file hoặc chạy tiến trình con. Nếu bạn muốn chắc chắn, hãy kiểm tra file zip trên [VirusTotal](https://www.virustotal.com/) và đối chiếu mã SHA256:
 
 ```
-SHA256 (PyToolsVSCode_v1.0.zip): <dán mã SHA256 vào đây>
+SHA256 (PyToolsVSCode_v1.0.zip): <1F7EFA569A36AD901FDC1444FEA4FF5A69D3586DFFED5E64921FC90533BAB77E>
 ```
 
 ## Gỡ cài đặt
