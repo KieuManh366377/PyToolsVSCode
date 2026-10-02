@@ -8,6 +8,8 @@ Bộ công cụ dòng lệnh cho **Windows** giúp làm việc với project Pyt
 
 > Đây là bản **phát hành thăm dò ý kiến**. Mình rất muốn nghe bạn thấy công cụ nào hữu ích, công cụ nào thừa, và còn thiếu gì. Xem mục [Góp ý](#góp-ý).
 
+**Mục lục:** [Bộ công cụ](#bộ-công-cụ-gồm-những-gì) · [Yêu cầu](#yêu-cầu) · [Cài đặt](#cài-đặt) · [Cách dùng nhanh](#cách-dùng-nhanh) · [Chi tiết từng công cụ](#chi-tiết-từng-công-cụ) · [Giới hạn](#giới-hạn-đã-biết) · [An toàn](#an-toàn-và-cảnh-báo-của-windows) · [Góp ý](#góp-ý)
+
 ## Bộ công cụ gồm những gì
 
 | Công cụ | Làm gì |
@@ -52,6 +54,8 @@ Mở project Python trong VS Code rồi `Ctrl+Shift+B`:
 4. Muốn dọn file build: chọn **Py • Clean** (`PyClean`).
 
 Các công cụ cũng chạy được từ terminal: `PyBuildTool.exe <thư_mục_project>`. Chạy `PyBuildTool.exe` không tham số thì mở giao diện; `PyClean.exe` không truyền thư mục thì dùng thư mục hiện tại.
+
+> **Muốn biết cách tổ chức và viết code `.py` / `.pyx` để build đúng?** Xem [Hướng dẫn viết code và build](docs/HUONG_DAN.md): có ví dụ chạy hết đường, quy tắc viết `.py` / `.pyx` và các lỗi thường gặp.
 
 ## Chi tiết từng công cụ
 
@@ -131,6 +135,7 @@ In ra tình trạng Python, các thư viện pip thường dùng, bản cập nh
 ## Giới hạn đã biết
 
 - Thư mục tạm của `PyBuildTool` cố định là `C:\Temp` (không theo `%TEMP%`).
+- Nếu cả project nằm trong thư mục cha có tên `build`, `dist`, `env` hoặc `venv`, `PyBuildTool` coi mọi file là bị loại trừ. Chi tiết xem [Hướng dẫn](docs/HUONG_DAN.md#7-những-thư-mục-bị-bỏ-qua-khi-quét).
 - Template "gui" của `PyNewProject` chưa kiểm chứng đầy đủ.
 - `PyWatcher` với project **chưa có** file cấu hình chưa được kiểm chứng; hiện nó báo rõ và dừng.
 - Chỉ hỗ trợ Windows x64.
@@ -138,11 +143,14 @@ In ra tình trạng Python, các thư viện pip thường dùng, bản cập nh
 ## An toàn và cảnh báo của Windows
 
 - File `.exe` **chưa ký số**, nên Windows SmartScreen có thể cảnh báo ("Windows protected your PC"). Bạn có thể bấm *More info*, *Run anyway*, hoặc dùng bước Unblock ở mục [Cài đặt](#cài-đặt).
-- Một số phần mềm diệt virus có thể báo nhầm các chương trình có thao tác xóa file hoặc chạy tiến trình con. Nếu bạn muốn chắc chắn, hãy kiểm tra file zip trên [VirusTotal](https://www.virustotal.com/) và đối chiếu mã SHA256:
+- Một số phần mềm diệt virus có thể gắn nhãn các chương trình có thao tác xóa file hoặc chạy tiến trình con. Khi quét file zip trên [VirusTotal](https://www.virustotal.com/), một số ít hãng (8/67 ở lần quét ngày 02/10/2026) gắn nhãn chung chung kiểu heuristic. Đây là kiểu cảnh báo thường gặp với file `.exe` chưa ký số; mình không biết chắc nguyên nhân từng hãng, nên bạn hãy tự quét và cân nhắc trước khi chạy.
+- Đối chiếu mã SHA256 của file zip để chắc chắn bạn tải đúng bản:
 
 ```
-SHA256 (PyToolsVSCode_v1.0.zip): <1F7EFA569A36AD901FDC1444FEA4FF5A69D3586DFFED5E64921FC90533BAB77E>
+SHA256 (PyToolsVSCode_v1.0.zip): 1F7EFA569A36AD901FDC1444FEA4FF5A69D3586DFFED5E64921FC90533BAB77E
 ```
+
+Cách tính trong PowerShell: `Get-FileHash .\PyToolsVSCode_v1.0.zip -Algorithm SHA256`
 
 ## Gỡ cài đặt
 
@@ -170,4 +178,4 @@ Tác giả: **Kieu Manh**.
 
 ## English summary
 
-**PyToolsVSCode** is a set of Windows command-line tools for Python projects in VS Code: build `.py`/`.pyx` to `.pyd` (Cython) and `.exe` (PyInstaller) with `PyBuildTool`, auto-rebuild on save with `PyWatcher`, safe cleanup with `PyClean` (`/dry` preview), project scaffolding with `PyNewProject`, environment checks with `PyEnvChecker`, and one-time VS Code task setup with `PyConfig`. Download the zip from Releases, unblock it (right-click, Properties, Unblock), extract it keeping the `Internal` folder, run `PyConfig.exe` once, then use `Ctrl+Shift+B` in VS Code. Binaries are unsigned, so SmartScreen may warn. Feedback is very welcome via Issues or Discussions.
+**PyToolsVSCode** is a set of Windows command-line tools for Python projects in VS Code: build `.py`/`.pyx` to `.pyd` (Cython) and `.exe` (PyInstaller) with `PyBuildTool`, auto-rebuild on save with `PyWatcher`, safe cleanup with `PyClean` (`/dry` preview), project scaffolding with `PyNewProject`, environment checks with `PyEnvChecker`, and one-time VS Code task setup with `PyConfig`. Download the zip from Releases, unblock it (right-click, Properties, Unblock), extract it keeping the `Internal` folder, run `PyConfig.exe` once, then use `Ctrl+Shift+B` in VS Code. See [docs/HUONG_DAN.md](docs/HUONG_DAN.md) (Vietnamese) for how to structure and write `.py`/`.pyx` code. Binaries are unsigned, so SmartScreen may warn, and a few antivirus engines flag them heuristically (see the safety section). Feedback is very welcome via Issues or Discussions.
