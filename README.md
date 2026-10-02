@@ -2,6 +2,10 @@
 
 Bộ công cụ dòng lệnh cho **Windows** giúp làm việc với project Python trong **VS Code** nhanh hơn: tự build `.py` / `.pyx` thành `.pyd` (Cython) rồi đóng gói `.exe` (PyInstaller), tự build lại khi lưu file, dọn file build, tạo project mới và kiểm tra môi trường. Tất cả chạy bằng một phím tắt trong VS Code (`Ctrl+Shift+B`).
 
+<p align="center">
+  <img src="PyToolsVSCode.png" alt="Menu task Py trong VS Code" width="700">
+</p>
+
 > Đây là bản **phát hành thăm dò ý kiến**. Mình rất muốn nghe bạn thấy công cụ nào hữu ích, công cụ nào thừa, và còn thiếu gì. Xem mục [Góp ý](#góp-ý).
 
 ## Bộ công cụ gồm những gì
